@@ -10,9 +10,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.books.ui.BooksApp
+import com.example.books.ui.BooksViewModel
 import com.example.books.ui.theme.BooksTheme
 
-const val apiKey = "AIzaSyC3sw11n20eOe19lAiwPpGeDj1HIIJCceU"
+//const val apiKey = "AIzaSyC3sw11n20eOe19lAiwPpGeDj1HIIJCceU"
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,22 +27,14 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    val booksViewModel : BooksViewModel = viewModel(
+                        factory = BooksViewModel.Factory
+                    )
+                    BooksApp(
+                        booksViewModel = booksViewModel
+                    )
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    BooksTheme {
-        Greeting("Android")
     }
 }

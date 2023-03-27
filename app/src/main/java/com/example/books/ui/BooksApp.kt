@@ -23,7 +23,8 @@ enum class BooksScreen {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BooksApp(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    booksViewModel: BooksViewModel
 ) {
     val navController = rememberNavController()
     Scaffold(
