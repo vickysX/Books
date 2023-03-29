@@ -1,6 +1,5 @@
 package com.example.books.ui
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -30,6 +29,7 @@ fun BooksApp(
     Scaffold(
         topBar = {
             TopAppBar(
+                // TODO: Implement back button with backwards navigation
                 title = {
                     Text(text = stringResource(R.string.app_name))
                 }
@@ -42,7 +42,10 @@ fun BooksApp(
             startDestination = BooksScreen.SEARCH.name
         ) {
             composable(route = BooksScreen.SEARCH.name) {
-                SearchScreen()
+                SearchScreen(
+                    value = "",
+                    onValueChange = {}
+                )
             }
             composable(route = BooksScreen.RESULTS.name) {
                 ResultsScreen()

@@ -2,4 +2,6 @@
     <string name="app_name">Books</string>
 
     <string name="search_btn">Search</string>
+    <string name="search_placeholder">Search in Google Books</string>
+    <string name="search_bar">Search bar</string>
 </resources>
