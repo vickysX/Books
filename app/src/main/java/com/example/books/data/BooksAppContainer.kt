@@ -8,22 +8,25 @@ import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
 
 interface AppContainer {
-    val volumesListRepository : VolumesListRepository
+    val booksRepository : BooksRepository
 }
 
 class BooksAppContainer : AppContainer {
     private val apiKey = "AIzaSyC3sw11n20eOe19lAiwPpGeDj1HIIJCceU"
-    private val baseUrl = "https://www.googleapis.com/books/v1/volumes?"
+    private val baseUrl = "https://www.googleapis.com/books/v1/volumes"
+    private val json = Json {
+        ignoreUnknownKeys = true
+    }
     @OptIn(ExperimentalSerializationApi::class)
     private val retrofit = Retrofit.Builder()
-        .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
+        .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
         .baseUrl(baseUrl)
         .build()
     private val retrofitService : BooksApiService by lazy {
         retrofit.create(BooksApiService::class.java)
     }
-    override val volumesListRepository: VolumesListRepository by lazy {
-        NetworkVolumesListRepository(retrofitService)
+    override val booksRepository: BooksRepository by lazy {
+        NetworkBooksRepository(retrofitService)
     }
 
 }

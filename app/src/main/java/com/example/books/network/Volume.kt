@@ -4,12 +4,12 @@ import kotlinx.serialization.*
 
 @Serializable
 data class VolumesList(
-    val items : List<Volume>,
-    val totalItems : Int
+    val items : List<Volume>
 )
 
 @Serializable
 data class Volume(
+    val volumeId : String,
     val volumeInfo : VolumeInfo
 )
 

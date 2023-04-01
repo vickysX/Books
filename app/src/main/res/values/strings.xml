@@ -4,4 +4,6 @@
     <string name="search_btn">Search</string>
     <string name="search_placeholder">Search in Google Books</string>
     <string name="search_bar">Search bar</string>
+
+    <string name="num_results">Your results produced %s results</string>
 </resources>

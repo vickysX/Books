@@ -29,7 +29,7 @@ fun BooksApp(
     Scaffold(
         topBar = {
             TopAppBar(
-                // TODO: Implement back button with backwards navigation
+                //TODO: Implement back button with backwards navigation
                 title = {
                     Text(text = stringResource(R.string.app_name))
                 }
@@ -43,12 +43,16 @@ fun BooksApp(
         ) {
             composable(route = BooksScreen.SEARCH.name) {
                 SearchScreen(
-                    value = "",
-                    onValueChange = {}
+                    value = booksViewModel.userInput,
+                    onValueChange = {input ->
+                        booksViewModel.updateUserInput(input)
+                    }
                 )
             }
             composable(route = BooksScreen.RESULTS.name) {
-                ResultsScreen()
+                ResultsScreen(
+                    booksUiState = booksViewModel.booksUiState
+                )
             }
         }
     }
