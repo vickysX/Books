@@ -39,14 +39,14 @@ fun SearchScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
             .padding(
-                top = 48.dp,
+                top = 96.dp,
                 bottom = 96.dp,
                 start = 48.dp,
                 end = 48.dp
             )
     ) {
         Image(
-            imageVector = ImageVector.vectorResource(id = R.drawable.books_stack),
+            imageVector = ImageVector.vectorResource(id = R.drawable.books_pile),
             contentDescription = null,
         )
         TextField(
@@ -67,7 +67,7 @@ fun SearchScreen(
                 imeAction = ImeAction.Done
             ),
             keyboardActions = KeyboardActions(
-                onDone = {onSearch}
+                onDone = {onSearch()}
             ),
             modifier = Modifier
                 .border(BorderStroke(Dp.Hairline, Color.Transparent))

@@ -1,15 +1,16 @@
 package com.example.books.ui
 
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.books.R
 import com.example.books.ui.screens.ResultsScreen
@@ -26,10 +27,25 @@ fun BooksApp(
     booksViewModel: BooksViewModel
 ) {
     val navController = rememberNavController()
+    val backStackEntry by navController.currentBackStackEntryAsState()
+    val currentScreen = BooksScreen.valueOf(
+        backStackEntry?.destination?.route ?: BooksScreen.SEARCH.name
+        )
     Scaffold(
         topBar = {
             TopAppBar(
-                //TODO: Implement back button with backwards navigation
+                navigationIcon = {
+                    if (navController.previousBackStackEntry != null) {
+                        IconButton(
+                            onClick = {navController.navigateUp()}
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.ArrowBack,
+                                contentDescription = stringResource(id = R.string.back_btn)
+                            )
+                        }
+                    }
+                },
                 title = {
                     Text(text = stringResource(R.string.app_name))
                 }
