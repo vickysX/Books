@@ -12,8 +12,8 @@ interface AppContainer {
 }
 
 class BooksAppContainer : AppContainer {
-    private val apiKey = "AIzaSyC3sw11n20eOe19lAiwPpGeDj1HIIJCceU"
-    private val baseUrl = "https://www.googleapis.com/books/v1/volumes"
+    //private val apiKey = "AIzaSyC3sw11n20eOe19lAiwPpGeDj1HIIJCceU"
+    private val baseUrl = "https://www.googleapis.com/books/v1/"
     private val json = Json {
         ignoreUnknownKeys = true
     }

@@ -9,18 +9,19 @@ data class VolumesList(
 
 @Serializable
 data class Volume(
+    @SerialName("id")
     val volumeId : String,
     val volumeInfo : VolumeInfo
 )
 
 @Serializable
 data class VolumeInfo(
-    val title : String,
-    val authors : List<String>,
-    val publishedDate : String,
-    val description : String,
-    val pageCount : String,
-    val mainCategory : String,
+    val title : String = "",
+    val authors : List<String> = listOf(),
+    val publishedDate : String = "",
+    val description : String = "",
+    val pageCount : Int = 0,
+    val mainCategory : String = "",
     val imageLinks : ImageLinks
 )
 

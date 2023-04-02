@@ -46,6 +46,10 @@ fun BooksApp(
                     value = booksViewModel.userInput,
                     onValueChange = {input ->
                         booksViewModel.updateUserInput(input)
+                    },
+                    onSearch = {
+                        navController.navigate(route = BooksScreen.RESULTS.name)
+                        booksViewModel.getResults()
                     }
                 )
             }

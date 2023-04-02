@@ -6,4 +6,6 @@
     <string name="search_bar">Search bar</string>
 
     <string name="num_results">Your results produced %s results</string>
+    <string name="cover_description">Cover of %s</string>
+    <string name="pages">%s pages</string>
 </resources>
